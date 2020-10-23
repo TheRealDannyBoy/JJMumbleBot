@@ -71,6 +71,18 @@ class Plugin(PluginBase):
         result = random.randint(1, 20)
         GS.gui_service.quick_gui(f"<font color='cyan'>D20 Roll Result:</font> <font color='yellow'>{result}</font>",
                                  text_type='header', box_align='left')
+        
+    def cmd_d100roll(self, data):
+        random.seed(int.from_bytes(os.urandom(8), byteorder="big"))
+        result = random.randint(1, 100)
+        GS.gui.service.quick_gui(f"<font color='cyan'>D20 Roll Result:</font> <font color='yellow'>{result}</font>",
+                                 text_type='header', box_align='left')
+      
+    def cmd_dfroll(self, data):
+        random.seed(int.from_bytes(os.urandom(8), byteorder="big"))
+        result = random.randint(-1, 1)
+        GS.gui.service.quick_gui(f"<font color='cyan'>D20 Roll Result:</font> <font color='yellow'>{result}</font>",
+                                 text_type='header', box_align='left')
 
     def cmd_customroll(self, data):
         all_data = data.message.strip().split()
